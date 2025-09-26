@@ -81,7 +81,7 @@ instance {-# OVERLAPPABLE #-}( Show a
         precShows (Rec w) =
             let constructor :: PrecShowS =
                     showCon . lowerInitial $ case datatypeInfo (Proxy @a) of
-                        ADT _ _ npConstrInfo -> (!! hindex w) . hcollapse $ hmap
+                        ADT _ _ npConstrInfo _ -> (!! hindex w) . hcollapse $ hmap
                             (K . constructorName) npConstrInfo
                         Newtype _ _ constrInfo -> constructorName constrInfo
                 terms :: [ PrecShowS ] = hcollapse $ hcmap
