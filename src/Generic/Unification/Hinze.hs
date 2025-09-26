@@ -17,7 +17,7 @@ module Generic.Unification.Hinze
   , Logic (..)
   , runLogic, evalLogic, (===)
   ) where
-
+import Control.Moand
 import Control.Monad.Except
 import Control.Monad.Identity
 import Control.Monad.State
