@@ -28,7 +28,7 @@ module Generic.Unification.Term
 import           Data.Char ( toLower )
 import           Generics.SOP
 import           Text.Show.Combinators
-
+import           Data.Kind (Type)
 import Generic.Unification.Term.Internal (errorRecOnSimpleTypes)
 
 -- | Term is the datatype which is inteded to be the equivalent of a prolog
@@ -132,6 +132,6 @@ instance {-# OVERLAPPABLE #-}( Eq a
         go (SOP (S xss)) (SOP (S yss)) = go (SOP xss) (SOP yss)
         go _ _ = False
 
-        eq :: forall (x :: *). Eq (Term x) => Term x -> Term x -> K Bool x
+        eq :: forall (x :: Type). Eq (Term x) => Term x -> Term x -> K Bool x
         eq a b = K (a == b)
     _ == _ = False
